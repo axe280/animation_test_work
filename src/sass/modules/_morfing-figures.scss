@@ -12,6 +12,7 @@
   color: var(--figures-text-color, colors.$c-ivory);
   position: relative;
   @include transition(all);
+  padding-bottom: 100vh;
 }
 
 .morfing-figures {
