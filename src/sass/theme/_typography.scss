@@ -1,0 +1,332 @@
+@use "../helpers/mixins";
+@use "../variables/breakpoints";
+@use "../variables/colors";
+
+body {
+  font-variant-numeric: lining-nums;
+  font-family: var(--font-default), var(--system-font);
+  font-size: var(--site-text-size);
+  line-height: 1;
+  color: colors.$c-charcoal-brown;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.large-heading {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-accent), var(--system-font);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.large-heading {
+  text-transform: capitalize;
+  font-size: var(--heading-large);
+  line-height: 1.2;
+
+  @media (min-width: breakpoints.$bp-min-tablet) {
+    @include mixins.fluid-font-size(70);
+    line-height: 1.3;
+  }
+}
+
+h1,
+.h1 {
+  font-size: var(--heading-h1);
+  line-height: 1.2;
+
+  @media (min-width: breakpoints.$bp-min-tablet) {
+    @include mixins.fluid-font-size(50);
+    line-height: 1.3;
+  }
+}
+
+h2,
+.h2 {
+  font-size: var(--heading-h2);
+  line-height: 1.7;
+
+  @media (min-width: breakpoints.$bp-min-tablet) {
+    @include mixins.fluid-font-size(35);
+    line-height: 1.5;
+  }
+}
+
+h3,
+.h3 {
+  font-size: var(--heading-h3);
+}
+
+h4,
+.h4 {
+  font-size: var(--heading-h4);
+}
+
+h5,
+.h5 {
+  font-size: var(--heading-h5);
+}
+
+h6,
+.h6 {
+  font-size: var(--heading-h6);
+}
+
+blockquote {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+  padding-left: 30px;
+  border-left: 4px solid colors.$c-olive-moss;
+}
+
+ul,
+ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li,
+p,
+figure,
+figcaption {
+  margin: 0;
+  padding: 0;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+._font-500 {
+  font-weight: 500;
+}
+
+._font-600 {
+  font-weight: 600;
+}
+
+._font-700 {
+  font-weight: 700;
+}
+
+img {
+  vertical-align: middle;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+._text-center {
+  text-align: center;
+}
+
+._text-left {
+  text-align: left;
+}
+
+._text-right {
+  text-align: right;
+}
+
+._uppercase {
+  text-transform: uppercase;
+}
+
+// text-content;
+.rich-text-bl {
+  --offset-lg: 64px;
+  --offset: 40px;
+  --offset-min: 20px;
+
+  line-height: 1.5;
+
+  @media (min-width: breakpoints.$bp-min-md) {
+    --offset: 60px;
+    //   --offset-min: 30px;
+
+    line-height: 1.7;
+  }
+
+  &._half-columns {
+    @media (min-width: breakpoints.$bp-min-laptop) {
+      column-count: 2;
+      column-gap: 32px;
+    }
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  // h1 {
+  //   margin-bottom: var(--offset-sm);
+  // }
+
+  // h2 {
+  //   font-size: 32px;
+  //   margin-bottom: var(--offset-sm);
+  // }
+
+  // h3 {
+  //   font-size: 24px;
+  // }
+
+  // h4 {
+  //   font-size: 22px;
+  // }
+
+  // h5 {
+  //   font-size: 20px;
+  // }
+
+  // h6 {
+  //   font-size: 18px;
+  // }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: var(--offset);
+    margin-bottom: var(--offset-min);
+
+    & + ul,
+    & + ol {
+      margin-top: var(--offset-min);
+    }
+  }
+
+  blockquote,
+  table,
+  ul,
+  ol,
+  .scroll-wrapper,
+  img,
+  figure,
+  video,
+  iframe {
+    margin-top: var(--offset);
+  }
+
+  blockquote,
+  table,
+  .scroll-wrapper {
+    margin-bottom: var(--offset);
+  }
+
+  p,
+  ul,
+  ol,
+  img,
+  figure,
+  video,
+  iframe {
+    margin-bottom: var(--offset-min);
+  }
+
+  .scroll-wrapper {
+    table {
+      margin: 0;
+    }
+  }
+
+  img,
+  figure,
+  video {
+    display: block;
+    padding: 0;
+    width: auto;
+    height: auto;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  iframe {
+    aspect-ratio: 16/9;
+    border: none;
+  }
+
+  figure {
+    img {
+      margin: 0;
+    }
+
+    figcaption {
+      margin-top: 10px;
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  }
+
+  strong,
+  b {
+    font-weight: 700;
+  }
+
+  li {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &::before {
+      content: "•";
+      margin-right: 8px;
+      color: colors.$c-primary;
+    }
+  }
+
+  ul,
+  ol {
+    ul,
+    ol {
+      margin-top: var(--offset-min);
+      margin-bottom: var(--offset-min);
+    }
+  }
+
+  // ul {
+  //   ol li::before {}
+  // }
+
+  ol {
+    counter-reset: numbList;
+
+    li {
+      &::before {
+        counter-increment: numbList;
+        content: counter(numbList) ".";
+        font-family: var(--font-default), sans-serif;
+        color: colors.$c-primary;
+      }
+    }
+  }
+}

@@ -1,0 +1,162 @@
+@use "sass:math";
+@use "../variables/colors";
+
+$deskSize: 1440;
+
+@function vw-desktop-size($pixels, $deskSize: calc($deskSize / 100)) {
+  @return (calc($pixels/$deskSize)) + vw;
+}
+
+@mixin fluid-font-size($size) {
+  font-size: ($size) + px;
+
+  @media (max-width: (($deskSize - 1)+px)) {
+    font-size: vw-desktop-size($size);
+  }
+}
+
+@mixin object-fit($fit: fill, $position: null) {
+  object-fit: $fit;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+
+  @if $position {
+    object-position: $position;
+  }
+}
+
+@mixin absolute-full-width {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin absolute-background {
+  @include absolute-full-width;
+
+  img,
+  svg,
+  video {
+    width: 100%;
+    height: 100%;
+
+    @include object-fit(cover);
+  }
+}
+
+@mixin text-ellipsis {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@mixin hover {
+  @media not all and (hover: none) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin placeholder-color($color-pl) {
+  &:-moz-placeholder,
+  &::-moz-placeholder {
+    color: $color-pl;
+    opacity: 1;
+  }
+
+  &::-webkit-input-placeholder {
+    color: $color-pl;
+    opacity: 1;
+  }
+
+  &:focus {
+    &:-moz-placeholder,
+    &::-moz-placeholder {
+      opacity: 0;
+    }
+
+    &::-webkit-input-placeholder {
+      opacity: 0;
+    }
+  }
+}
+
+@mixin target-ie11 {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}
+
+@mixin target-edge {
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+@mixin target-safari {
+  @media not all and (min-resolution: 0.001dpcm) {
+    @content;
+  }
+}
+
+@mixin aspect-ratio($arg: 1, $arg2: null) {
+  position: relative;
+
+  &::before {
+    display: block;
+    width: 100%;
+
+    @if $arg2 ==null {
+      @if math.unit($arg) == "%" {
+        padding-top: $arg;
+      } @else {
+        padding-top: math.percentage(calc(1 / $arg));
+      }
+    } @else {
+      padding-top: math.percentage(calc($arg/$arg2));
+    }
+
+    content: "";
+  }
+}
+
+@mixin fullheight() {
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+@mixin fullminheight() {
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
+@mixin hover {
+  @media not all and (hover: none) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// not touch devices
+@mixin nottouchmedia {
+  @media not all and (hover: none) {
+    @content;
+  }
+}
+
+// dash line bg
+@mixin dashlinebg(
+  $color: colors.$c-black,
+  $thickness: 4px,
+  $gap: 4px,
+  $size: 4px
+) {
+  background: conic-gradient(at $thickness 50%, #0000 75%, $color 0) #{$gap}/
+    calc($gap + $thickness) $size;
+}

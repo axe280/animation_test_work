@@ -1,0 +1,67 @@
+@use "../helpers/mixins";
+@use "../variables/breakpoints";
+@use "../variables/colors";
+
+.about-section {
+  --mask-bg: #{rgba(colors.$c-sand-beige, 0.8)};
+
+  background-color: colors.$c-sand-beige;
+  padding-top: 72px;
+  padding-bottom: 28px;
+
+  @media (min-width: breakpoints.$bp-min-md) {
+    padding-top: 86px;
+    padding-bottom: 24px;
+  }
+
+  .h2 {
+    margin-bottom: 100px;
+
+    @media (max-width: breakpoints.$bp-max-mobile) {
+      font-size: 20px;
+    }
+  }
+}
+
+.about-row {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @media (min-width: breakpoints.$bp-min-tablet) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    // justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__image {
+    position: relative;
+    overflow: hidden;
+    padding-top: 100%;
+    width: 100%;
+
+    @media (min-width: breakpoints.$bp-min-tablet) {
+      height: 264px;
+      width: 264px;
+      padding-top: 0;
+    }
+
+    img {
+      @include mixins.object-fit(cover);
+      @include mixins.absolute-full-width;
+    }
+  }
+
+  &__more-info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @media (min-width: breakpoints.$bp-min-tablet) {
+      width: 100%;
+      max-width: 512px;
+      margin-left: auto;
+    }
+  }
+}

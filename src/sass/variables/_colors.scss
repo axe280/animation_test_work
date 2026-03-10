@@ -1,0 +1,29 @@
+// Neutral Colors
+$c-charcoal-brown: #312926;
+$c-ivory: #f9f0e8;
+$c-sand-beige: #e6d2b5;
+$c-sand: #d1b296;
+$c-terra-cotta-rust: #b4482a;
+$c-olive-moss: #758353;
+$c-black: #000000;
+$c-white: #fff928;
+
+$c-light: #cfcfcf;
+
+$c-primary: $c-terra-cotta-rust; // could use as main accent
+$c-primary-hover: rgba($c-primary, 0.95);
+
+$c-secondary: $c-olive-moss;
+$c-secondary-hover: rgba($c-secondary, 0.95);
+
+$c-success: #009a00;
+$c-danger: #ff4117;
+$c-warning: #ffae1a;
+
+// Links
+$c-link: $c-charcoal-brown;
+$c-link-hover: $c-terra-cotta-rust;
+
+// Body / Header
+$c-body: $c-ivory;
+$c-header: $c-ivory;

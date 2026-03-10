@@ -1,0 +1,13 @@
+// html {
+//   font-size: 1vw;
+// }
+
+// $browser-font-size-viewport-ratio: 14.4; // 1440 DESIGN SIZE
+
+// @function rem($pixels, $size: $browser-font-size-viewport-ratio) {
+//   @return #{calc($pixels/$size)}rem;
+// }
+
+// @function scaleSizeFunc($size) {
+//   @return #{calc(rem($size) * var(--multiply-scale))};
+// }

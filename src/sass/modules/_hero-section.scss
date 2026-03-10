@@ -1,0 +1,109 @@
+@use "../helpers/mixins";
+@use "../variables/breakpoints";
+@use "../variables/colors";
+
+// full section bg
+.hero-section-bg {
+  position: relative;
+  display: flex;
+  min-height: 994px;
+  padding: 92px 0 30px;
+  overflow: hidden;
+  margin-top: calc(var(--header-height) * -1);
+  text-transform: capitalize;
+  background-color: colors.$c-ivory;
+  z-index: 2;
+  background-image: linear-gradient(
+    180deg,
+    rgba(239, 233, 228, 0) 0%,
+    rgba(239, 233, 228, 1) 100%
+  );
+  @media (min-width: breakpoints.$bp-min-tablet) {
+    padding-top: 116px;
+    min-height: 100vh;
+  }
+
+  .container,
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    flex-grow: 1;
+    justify-content: space-between;
+
+    .rich-text-bl {
+      max-width: 600px;
+    }
+  }
+
+  .large-heading {
+    > div {
+      &:first-child {
+        @media (max-width: breakpoints.$bp-max-mobile) {
+          text-indent: 80px;
+        }
+      }
+    }
+  }
+
+  &__buttons {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    @media (min-width: breakpoints.$bp-min-md) {
+      margin-top: 24px;
+    }
+
+    @media (min-width: breakpoints.$bp-min-tablet) {
+      flex-direction: row;
+    }
+
+    @media (min-width: breakpoints.$bp-min-md) {
+      max-width: 536px;
+    }
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__info {
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-top: 16px;
+
+    @media (min-width: breakpoints.$bp-min-tablet) {
+      max-width: 400px;
+    }
+
+    @media (min-width: breakpoints.$bp-min-md) {
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+
+  &__image {
+    z-index: -1;
+    @media (max-width: breakpoints.$bp-max-mobile) {
+      max-height: 750px;
+    }
+    img {
+      @media (max-width: breakpoints.$bp-max-mobile) {
+        object-position: 90% 50%;
+      }
+    }
+  }
+}

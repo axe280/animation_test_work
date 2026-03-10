@@ -1,0 +1,24 @@
+@use "../helpers/mixins";
+@use "../variables/breakpoints";
+@use "../variables/colors";
+
+.-text-mask {
+  position: absolute;
+  inset: 5% 0 -5%;
+  z-index: 1;
+  transform: scaleX(1);
+  transform-origin: 100% 100%;
+  background-color: var(--mask-bg, transparent);
+  // border: 1px solid colors.$c-black;
+}
+
+.js-mask-effect-text {
+  opacity: 0;
+}
+
+.js-figure-effect-text {
+  overflow: clip;
+  > div {
+    transform: translateY(100%);
+  }
+}

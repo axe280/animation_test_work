@@ -1,0 +1,47 @@
+@use "breakpoints";
+
+:root {
+  /* Theme Offsets */
+  --viewport-height-diff: 0;
+
+  --container-width: 1440px;
+  --container-space: 16px;
+  --container-negative-space: calc(var(--container-space) * -1);
+
+  /* Vertical Static Offsets */
+  --offset-xs: 32px;
+  --offset-sm: 64px;
+  --offset-md: 80px;
+  --offset-lg: 100px;
+  --offset-xl: 130px;
+  --offset-xxl: 160px;
+
+  --layout-offset: var(--offset-md);
+
+  /* Layers Gobal*/
+  --modal-z-index: 900;
+  --header-z-index: 800;
+  --footer-z-index: 400;
+  --scroll-btn-z-index: 300;
+
+  /* Layers Inside Header*/
+  --above-header-menu-z-index: 90;
+  --header-menu-z-index: 80;
+
+  @media (min-width: breakpoints.$bp-min-tablet) {
+    --container-space: 24px;
+    --layout-offset: var(--offset-lg);
+  }
+
+  @media (min-width: breakpoints.$bp-min-md) {
+    --container-space: 42px;
+  }
+
+  @media (min-width: breakpoints.$bp-min-laptop) {
+    --layout-offset: var(--offset-xl);
+  }
+
+  @media (min-width: breakpoints.$bp-min-design) {
+    --layout-offset: var(--offset-xxl);
+  }
+}

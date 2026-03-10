@@ -1,0 +1,145 @@
+@use "../helpers/mixins";
+@use "../variables/breakpoints";
+@use "../variables/colors";
+
+* {
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: colors.$c-body;
+  // overflow-x: hidden;
+}
+
+.site-wrapper {
+  flex: 1 0 auto;
+  overflow: hidden;
+  padding-top: var(--header-height);
+}
+
+.js-viewport-block {
+  content: "";
+  position: fixed;
+  left: -100%;
+  top: 0;
+  height: 100vh;
+  visibility: hidden;
+  z-index: -2;
+}
+
+.footer {
+  flex-shrink: 0;
+}
+
+.wrapper {
+  width: 100%;
+  padding-left: var(--container-space);
+  padding-right: var(--container-space);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+._max-md-width {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.def-bottom {
+  margin-bottom: var(--layout-offset);
+}
+
+.negative-horizontal-space {
+  margin-left: var(--container-negative-space);
+  margin-right: var(--container-negative-space);
+
+  &._only-devices {
+    @media (min-width: breakpoints.$bp-min-md) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  &._only-laptop {
+    @media (max-width: breakpoints.$bp-max-tablet) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
+
+//
+.max-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+
+  @media (min-width: breakpoints.$bp-min-laptop) {
+    aspect-ratio: 0;
+    height: 680px;
+  }
+
+  img,
+  video {
+    width: 100%;
+    border-radius: 0;
+
+    @media (min-width: breakpoints.$bp-min-md) {
+      @include mixins.absolute-full-width;
+      @include mixins.object-fit(cover);
+    }
+  }
+}
+
+// cover
+.cover,
+.cover-overlay {
+  @include mixins.absolute-full-width;
+
+  img,
+  video {
+    @include mixins.absolute-full-width;
+    @include mixins.object-fit(cover);
+  }
+}
+
+.cover-overlay {
+  z-index: -1;
+
+  &::before {
+    content: "";
+    @include mixins.absolute-full-width;
+    z-index: 5;
+    background-color: rgba(colors.$c-black, 0.4);
+  }
+}
+
+// anchor bl
+.anchor-bl {
+  --anchor-offset: 0px;
+
+  display: block;
+  position: relative;
+  top: calc(
+    var(--header-sticky-diff) *
+      -1 - var(--viewport-height-diff) - var(--anchor-offset)
+  );
+  left: 0;
+}

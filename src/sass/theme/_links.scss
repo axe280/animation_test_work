@@ -1,0 +1,172 @@
+@use "../helpers/mixins";
+@use "../variables/breakpoints";
+@use "../variables/colors";
+
+a,
+.text-link {
+  cursor: pointer;
+  color: colors.$c-link;
+  text-decoration: underline;
+  transition: all 200ms;
+
+  @include mixins.hover {
+    text-decoration: none;
+    color: colors.$c-link-hover;
+  }
+}
+
+// Bread Crumbs
+.bread-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  line-height: 20px;
+
+  li {
+    display: flex;
+    align-items: center;
+    color: currentColor;
+
+    // &:before {
+    //   content: '/ ';
+    // }
+
+    // &:first-child {
+    //   &:before {
+    //     display: none;
+    //   }
+    // }
+
+    &:last-child {
+      opacity: 0.8;
+    }
+
+    a {
+      color: currentColor;
+      text-decoration: none;
+
+      @include mixins.hover {
+        opacity: 0.8;
+      }
+    }
+
+    .icon {
+      --icon-size: 20px;
+      flex-shrink: 0;
+      stroke: none;
+      // fill: none;
+    }
+  }
+}
+
+// Effects
+.underline-link {
+  display: inline;
+  text-decoration: none;
+  background-image: linear-gradient(120deg, currentColor 0%, currentColor 100%);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 1px;
+  transition: all 200ms linear;
+
+  @include mixins.hover {
+    background-size: 0 1px;
+  }
+
+  &._hover {
+    background-size: 0 1px;
+
+    @include mixins.hover {
+      background-size: 100% 1px;
+    }
+  }
+}
+
+.underline-link-block {
+  padding-bottom: 4px;
+  position: relative;
+  display: inline-flex;
+  text-decoration: none;
+  transition: all 200ms linear;
+
+  @include mixins.hover {
+    &::before {
+      background-size: 0 100%;
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(
+      120deg,
+      currentColor 0%,
+      currentColor 100%
+    );
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 100%;
+    transition: all 200ms linear;
+  }
+
+  &._hover {
+    &::before {
+      background-size: 0 100%;
+    }
+
+    @include mixins.hover {
+      &::before {
+        background-size: 100% 100%;
+      }
+    }
+  }
+}
+
+.more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: colors.$c-link;
+  text-decoration: none;
+
+  @include mixins.hover {
+    .icon,
+    svg {
+      transform: translate(8px);
+    }
+  }
+}
+
+.link-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.28;
+  text-transform: uppercase;
+  color: colors.$c-link;
+  letter-spacing: 0.3;
+
+  @include mixins.hover {
+    text-decoration: none;
+    color: colors.$c-link-hover;
+
+    svg {
+      transform: translate(2px, -4px);
+    }
+  }
+
+  svg {
+    width: 12px;
+    height: 12px;
+    margin: 0 2px;
+    fill: currentColor;
+    stroke: none;
+    transition: transform 200ms;
+  }
+}

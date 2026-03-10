@@ -1,0 +1,32 @@
+@use "../helpers/mixins";
+@use "breakpoints";
+
+:root {
+  --font-default: "Hagrid";
+  --font-accent: "Hagrid";
+  --system-font:
+    -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica",
+    "Ubuntu", "Cantarell", "Arial", sans-serif;
+
+  --site-text-size: 14px;
+
+  --heading-large: 35px;
+
+  --heading-h1: 35px;
+  --heading-h2: 25px;
+  --heading-h3: 22px;
+  --heading-h4: 18px;
+  --heading-h5: 16px;
+  --heading-h6: 14px;
+
+  @media (min-width: breakpoints.$bp-min-tablet) {
+    --heading-large: 70px;
+
+    --heading-h1: 50px;
+    --heading-h2: 35px;
+    --heading-h3: 22px;
+    --heading-h4: 18px;
+    --heading-h5: 16px;
+    --heading-h6: 14px;
+  }
+}

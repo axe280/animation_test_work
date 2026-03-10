@@ -1,0 +1,13 @@
+@use "../helpers/mixins";
+@use "../variables/breakpoints";
+@use "../variables/colors";
+
+.page-label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+
+  @media (min-width: breakpoints.$bp-min-md) {
+    font-size: 18px;
+  }
+}

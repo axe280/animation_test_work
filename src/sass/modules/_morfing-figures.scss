@@ -1,0 +1,117 @@
+@use "../helpers/mixins";
+@use "../variables/breakpoints";
+@use "../variables/colors";
+
+// sass mixin for smooth transitions
+@mixin transition($properties: all, $duration: 0.3s, $timing: ease) {
+  transition: $properties $duration $timing;
+}
+
+.morfing-figures-wrapp {
+  background-color: var(--figures-bg-color, colors.$c-charcoal-brown);
+  color: var(--figures-text-color, colors.$c-ivory);
+  position: relative;
+  @include transition(all);
+}
+
+.morfing-figures {
+  gap: 1px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  height: 100vh;
+  z-index: 10;
+
+  div {
+    position: relative;
+    width: 88px;
+    height: 88px;
+
+    @media (min-width: breakpoints.$bp-min-md) {
+      width: 180px;
+      height: 180px;
+    }
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--figures-icon-color, colors.$c-sand-beige);
+    @include transition(fill);
+  }
+}
+
+.morfing-figures-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  padding-left: var(--container-space);
+  padding-right: var(--container-space);
+}
+
+.figure-number {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  font-size: 90px;
+  line-height: 1;
+  font-weight: 500;
+
+  @media (min-width: breakpoints.$bp-min-tablet) {
+    @include mixins.fluid-font-size(300);
+    right: 30px;
+  }
+}
+
+.figure-text-group {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.5;
+  position: relative;
+  z-index: 5;
+
+  @media (min-width: breakpoints.$bp-min-tablet) {
+    font-size: 16px;
+    padding: 40px 0;
+  }
+}
+
+.figure-head {
+  font-size: 22px;
+  line-height: 1.2;
+
+  @media (min-width: breakpoints.$bp-min-tablet) {
+    font-size: 30px;
+  }
+}
+
+.figure-about {
+  font-size: 18px;
+
+  @media (min-width: breakpoints.$bp-min-tablet) {
+    font-size: 22px;
+  }
+}
+
+.figure-text-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-transform: capitalize;
+  max-width: 480px;
+
+  @media (min-width: breakpoints.$bp-min-tablet) {
+    gap: 28px;
+  }
+}

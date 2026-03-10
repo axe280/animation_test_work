@@ -1,0 +1,99 @@
+@use "swiper/css";
+// @use "swiper/css/pagination";
+// @use "swiper/css/scrollbar";
+@use "swiper/css/effect-fade";
+@use "../helpers/mixins";
+@use "../variables/breakpoints";
+@use "../variables/colors";
+
+.mask-section {
+  position: relative;
+  background-color: colors.$c-terra-cotta-rust;
+  overflow: hidden;
+
+  &__wrapper {
+    position: relative;
+    width: 100%;
+    z-index: 2;
+    background-color: colors.$c-terra-cotta-rust;
+    mask-image: url('data:image/svg+xml,<svg width="245" height="315" viewBox="0 0 245 315" xmlns="http://www.w3.org/2000/svg"><path d="M0 122.5 A122.5 122.5 0 0 1 245 122.5 L245 315 L0 315 Z" fill="white"/></svg>');
+    mask-repeat: no-repeat;
+    mask-position: 50% 50%;
+    mask-size: 245px;
+  }
+
+  &__img {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    img {
+      @include mixins.absolute-full-width;
+      @include mixins.object-fit(cover);
+    }
+  }
+
+  &__inner {
+    font-size: 24px;
+    color: colors.$c-ivory;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 18px 0;
+
+    @media (min-width: breakpoints.$bp-min-tablet) {
+      padding: 34px 0 30px;
+    }
+  }
+
+  &__text-head {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    text-transform: capitalize;
+
+    @media (min-width: breakpoints.$bp-min-md) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    div {
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+
+  &__text-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    font-size: 14px;
+    line-height: 1.5;
+    text-transform: capitalize;
+
+    @media (min-width: breakpoints.$bp-min-md) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  }
+
+  &__text-title {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @media (min-width: breakpoints.$bp-min-tablet) {
+      max-width: 380px;
+    }
+
+    .h2 {
+      line-height: 1.3;
+    }
+  }
+}
